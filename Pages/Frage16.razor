@@ -1,0 +1,60 @@
+@page "/frage16"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 16</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Welches Land war keine „Alliierte Besatzungsmacht“ in Deutschland?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage16Richtig">Sowjetunion</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage16Falsch(1))">USA</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage16Falsch(2))">Frankreich</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage16Falsch(3))">Japan</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:48%">16/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage16Falsch(int Frage16Auswahl) 
+  {
+    switch(Frage16Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("USA");
+    MS.RichtigeAntwortenListe.Add("Sowjetunion");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage17");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Frankreich");
+   MS.RichtigeAntwortenListe.Add("Sowjetunion");
+   Navigation.NavigateTo("/frage17");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Japan");
+   MS.RichtigeAntwortenListe.Add("Sowjetunion");
+   Navigation.NavigateTo("frage17");
+        break; 
+    }
+  }
+
+    private void Frage16Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage17");
+    }
+} 

@@ -1,0 +1,60 @@
+@page "/frage7"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 7</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Zu welchem Fest tragen Menschen in Deutschland bunte Kostüme und Masken?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage7Falsch(1))">Beim Oktoberfest</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage7Falsch(2))">Am Maifeiertag</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage7Falsch(3))">Am Pfingsten</button>
+          <button class="answer-btn" type="button" @onclick="Frage7Richtig">Am Rosenmontag</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:21%">7/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage7Falsch(int Frage7Auswahl) 
+  {
+    switch(Frage7Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Beim Oktoberfest");
+    MS.RichtigeAntwortenListe.Add("Am Rosenmontag");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage8");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Am Maifeiertag");
+   MS.RichtigeAntwortenListe.Add("Am Rosenmontag");
+   Navigation.NavigateTo("/frage8");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Am Pfingsten");
+   MS.RichtigeAntwortenListe.Add("Am Rosenmontag");
+   Navigation.NavigateTo("/frage8");
+        break; 
+    }
+  }
+
+    private void Frage7Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage8");
+    }
+} 

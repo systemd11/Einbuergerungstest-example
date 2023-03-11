@@ -1,0 +1,60 @@
+@page "/frage22"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 22</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Der 27. Januar ist in Deutschland ein offizieller Gedenktag. Woran erinnert dieser Tag?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">An das Ende des Zweiten Weltkrieges</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">An die Verabschiedung des Grundgesetzes</button>
+         <button class="answer-btn" type="button" @onclick="FrageRichtig">Man darf sich sein Wohnort aussuchen</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">An die Wiedervereinigung Deutschlands</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:66%">22/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("An das Ende des Zweiten Weltkrieges");
+    MS.RichtigeAntwortenListe.Add("An die Opfer des Nationalsozialismus.");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage21");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("An die verabschiedung des Grundgesetzes");
+   MS.RichtigeAntwortenListe.Add("An die Opfer des Nationalsozialismus.");
+   Navigation.NavigateTo("/frage23");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("An die Wiedervereinigung Deutschlands.");
+   MS.RichtigeAntwortenListe.Add("An die Opfer des Nationalsozialismus.");
+   Navigation.NavigateTo("/frage23");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage23");
+    }
+} 

@@ -1,0 +1,60 @@
+@page "/frage3"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 3</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wer bildet den deutschen Bundesrat?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage3Falsch(1))">Die Abgeordneten des Bundestages</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage3Falsch(2))">Die Minister der Bundesregierung</button>
+          <button class="answer-btn" type="button" @onclick="Frage3Richtig">Die Regierungsvertreter der Bundesländer</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage3Falsch(3))">Die Parteimitglieder der Koalition</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:9%">3/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage3Falsch(int Frage3Auswahl) 
+  {
+    switch(Frage3Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Die Abgeordneten des Bundestages");
+    MS.RichtigeAntwortenListe.Add("Die Regierungsvertreter der Bundesländer");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage4");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Die Minister der Bundesregierung");
+   MS.RichtigeAntwortenListe.Add("Die Regierungsvertreter der Bundesländer");
+   Navigation.NavigateTo("/frage4");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Die Parteimitglieder der Koalition");
+   MS.RichtigeAntwortenListe.Add("Die Regierungsvertreter der Bundesländer");
+   Navigation.NavigateTo("/frage4");
+        break; 
+    }
+  }
+
+    private void Frage3Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage4");
+    }
+} 

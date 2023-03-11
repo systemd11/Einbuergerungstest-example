@@ -1,0 +1,24 @@
+@page "/"
+@inject NavigationManager Navigation
+@inject MainService MS
+@inject TimeService TS
+
+<center><MudText Typo="Typo.h3" Bold="true">Willkommen!</MudText>
+    <br>
+<MudText Typo="Typo.h6">Klicke auf "Jetzt starten" um dein Einbürgerungstest zu starten.</MudText> </center>
+    <br>
+
+    <center><button class="button-round" @onclick="RedirectToTestPage">Jetzt starten</button></center>
+    <br>
+    <br>
+<center><h3>Einbürgerungstest, Informatik-LK, Antonia, Iva und Emilia.</h3>
+    </center>
+
+
+@code { 
+    
+    public void RedirectToTestPage() {
+    TS.ToggleTimer();
+    Navigation.NavigateTo("/frage1");
+    }
+}

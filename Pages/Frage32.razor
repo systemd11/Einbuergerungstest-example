@@ -1,0 +1,59 @@
+@page "/frage32"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 32</h1>
+<br>
+    <div class="quiz-container">
+    <center><h3 class="question">Claus Schenk Graf von Stauffenberg wurde bekannt durch ?</h3</center>
+    <form>
+        <div class="btn-container">
+           <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Eine Goldmedaille bei den Olympischen Spielen 1936.</button>
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Dem Bau des Reichstagsgebäudes</button>
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">Das Attentat auf Hitler am 20. Juli 1944</button>
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Den Aufbau der Wehrmacht</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:96%"32/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Eine Goldmedaille bei den Olympischen Spielen 1936");
+    MS.RichtigeAntwortenListe.Add("Das Attentat auf Hitler am 20. Juli 1944");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage33");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Dem Bau des Reichstagsgebäudes");
+   MS.RichtigeAntwortenListe.Add("Das Attentat auf Hitler am 20. Juli 1944");
+   Navigation.NavigateTo("/frage33");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Den Aufbau der Wehrmacht");
+   MS.RichtigeAntwortenListe.Add("Das Attentat auf Hitler am 20. Juli 1944");
+   Navigation.NavigateTo("/frage33");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage33");
+    }
+} 

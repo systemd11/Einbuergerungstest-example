@@ -1,0 +1,60 @@
+@page "/frage18"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 18</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wann kann in Deutschland eine Partei verboten werden?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage18Falsch(1))">Wenn ihr Wahlkampf zu teuer ist</button>
+          <button class="answer-btn" type="button" @onclick="Frage18Richtig">Wenn sie gegen die Verfassung kämpft</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage18Falsch(2))">Wenn ihr Programm eine neue Richtung vorschlägt</button>
+         <button class="answer-btn" type="button" @onclick="@(() => Frage18Falsch(3))">Wenn sie Kritik am Staatsoberhaupt äußert</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:54%">18/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage18Falsch(int Frage18Auswahl) 
+  {
+    switch(Frage18Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Wenn ihr Wahlkampf zu teuer ist");
+    MS.RichtigeAntwortenListe.Add("Wenn sie gegen die Verfassung kämpft");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage19");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Wenn ihr Programm eine neue Richtung vorschlägt");
+   MS.RichtigeAntwortenListe.Add("Wenn sie gegen die Verfassung kämpft");
+   Navigation.NavigateTo("/frage19");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Wenn sie Kritik am Staatsoberhaupt äußert");
+   MS.RichtigeAntwortenListe.Add("Wenn sie gegen die Verfassung kämpft");
+   Navigation.NavigateTo("frage18");
+        break; 
+    }
+  }
+
+    private void Frage18Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage19");
+    }
+} 

@@ -1,0 +1,60 @@
+@page "/frage2"
+@inject MainService MS
+@inject TimeService TS
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 2</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Am 3. Oktober feiert man in Deutschland den Tag der Deutschen:</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage2Richtig">Einheit</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage2Falsch(1))">Nation</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage2Falsch(2))">Bundesländer</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage2Falsch(3))">Städte und Kommunen</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:6%">2/33</div>
+    </div>
+      </form>
+    </div>
+
+ @code {
+
+private void Frage2Falsch(int Frage2Auswahl) 
+  {
+    switch(Frage2Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Nation");
+    MS.RichtigeAntwortenListe.Add("Einheit");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage3");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Bundesländer");
+   MS.RichtigeAntwortenListe.Add("Einheit");
+   Navigation.NavigateTo("/frage3");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Städte und Kommunen");
+   MS.RichtigeAntwortenListe.Add("Einheit");
+   Navigation.NavigateTo("/frage3");
+        break; 
+    }
+  }
+
+    private void Frage2Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage3");
+    }
+} 
+

@@ -1,0 +1,60 @@
+@page "/frage17"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 17</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wann wurde die Mauer in Berlin für alle geöffnet?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage17Falsch(1))">1987</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage17Falsch(2))">1988</button>
+          <button class="answer-btn" type="button" @onclick="Frage17Richtig">1989</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage17Falsch(3))">1992</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:51%">17/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage17Falsch(int Frage17Auswahl) 
+  {
+    switch(Frage17Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("1987");
+    MS.RichtigeAntwortenListe.Add("1989");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage18");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("1988");
+   MS.RichtigeAntwortenListe.Add("1989");
+   Navigation.NavigateTo("/frage18");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("1992");
+   MS.RichtigeAntwortenListe.Add("1989");
+   Navigation.NavigateTo("frage18");
+        break; 
+    }
+  }
+
+    private void Frage17Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage18");
+    }
+} 

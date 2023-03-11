@@ -1,0 +1,60 @@
+@page "/frage26"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 26</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Welchem Grundsatz unterliegen Wahlen in Deutschland?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">offen, sicher, frei.</button>
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">frei, gleich, geheim</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">geschlossen, gleich, sicher</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">sicher, offen, freiwillig</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:78%">27/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("offen, sicher, frei");
+    MS.RichtigeAntwortenListe.Add("frei, gleich, geheim.");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage27");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("geschlossen, gleich, sicher");
+   MS.RichtigeAntwortenListe.Add("frei, gleich, geheim");
+   Navigation.NavigateTo("/frage27");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("sicher, offen, freiwillig");
+   MS.RichtigeAntwortenListe.Add("frei, gleich, geheim");
+   Navigation.NavigateTo("/frage27");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage27");
+    }
+}

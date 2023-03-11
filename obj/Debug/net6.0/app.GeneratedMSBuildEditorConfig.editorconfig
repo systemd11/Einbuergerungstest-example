@@ -1,0 +1,184 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = app
+build_property.RootNamespace = app
+build_property.ProjectDir = /home/user/einbürgerung2/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/user/einbürgerung2
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/user/einbürgerung2/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Ergebnis.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJnZWJuaXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage10.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxMC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage11.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxMS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage12.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxMi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage13.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxMy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage14.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxNC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage15.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxNS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage16.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxNi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage17.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxNy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage18.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxOC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage19.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UxOS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage20.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyMC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage21.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyMS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage22.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyMi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage23.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyMy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage24.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyNC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage25.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyNS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage26.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyNi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage27.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyNy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage28.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyOC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage29.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UyOS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage30.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UzMC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage31.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UzMS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage32.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UzMi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage33.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2UzMy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage4.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2U0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage5.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2U1LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage6.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2U2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage7.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2U3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage8.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2U4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Frage9.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnJhZ2U5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/user/einbürgerung2/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

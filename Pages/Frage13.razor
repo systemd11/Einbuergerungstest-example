@@ -1,0 +1,60 @@
+@page "/frage13"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 13</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wie viele Einwohner hat Deutschland?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage13Falsch(1))">70 Millionen</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage13Falsch(2))">78 Millionen</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage13Falsch(3))">80 Millionen</button>
+          <button class="answer-btn" type="button" @onclick="Frage13Richtig">83 Millionen"</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:39%">13/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage13Falsch(int Frage13Auswahl) 
+  {
+    switch(Frage13Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("70 Millionen");
+    MS.RichtigeAntwortenListe.Add("83 Millionen");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage14");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("78 Millionen");
+   MS.RichtigeAntwortenListe.Add("83 Millionen");
+   Navigation.NavigateTo("/frage14");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("90 Millionen");
+   MS.RichtigeAntwortenListe.Add("83 Millionen");
+   Navigation.NavigateTo("frage14");
+        break; 
+    }
+  }
+
+    private void Frage13Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage14");
+    }
+} 

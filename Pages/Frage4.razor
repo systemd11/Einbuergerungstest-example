@@ -1,0 +1,60 @@
+@page "/frage4"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 4</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wie heißt die deutsche Verfassung?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage4Falsch(1))">Volksgesetz</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage4Falsch(2))">Bundesgesetz</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage4Falsch(3))">Deutsches Gesetz</button>
+          <button class="answer-btn" type="button" @onclick="Frage4Richtig">Grundgesetz</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:12%">3/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage4Falsch(int Frage4Auswahl) 
+  {
+    switch(Frage4Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Volksgesetz");
+    MS.RichtigeAntwortenListe.Add("Grundgesetz");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage5");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Bundesgesetz");
+   MS.RichtigeAntwortenListe.Add("Grundgesetz");
+   Navigation.NavigateTo("/frage5");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Deutsches Gesetz");
+   MS.RichtigeAntwortenListe.Add("Grundgesetz");
+   Navigation.NavigateTo("/frage5");
+        break; 
+    }
+  }
+
+    private void Frage4Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage5");
+    }
+} 

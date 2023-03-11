@@ -1,0 +1,59 @@
+@page "/frage28"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 28</h1>
+<br>
+    <div class="quiz-container">
+    <center><h3 class="question">Welches Gericht ist in Deutschland bei Konflikten in der Arbeitswelt zuständig?</h3</center>
+    <form>
+        <div class="btn-container">
+           <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Das Familiengericht</button>
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">Das Arbeitsgericht</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Das Strafgericht</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Das Amtsgericht</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:84%">28/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Das Familiengericht");
+    MS.RichtigeAntwortenListe.Add("Das Arbeitsgericht");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage29");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Das Strafgericht");
+   MS.RichtigeAntwortenListe.Add("Das Arbeitsgericht");
+   Navigation.NavigateTo("/frage29");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Das Amtsgericht");
+   MS.RichtigeAntwortenListe.Add("Das Arbeitsgericht");
+   Navigation.NavigateTo("/frage29");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage29");
+    }
+} 

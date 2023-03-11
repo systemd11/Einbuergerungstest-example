@@ -1,0 +1,64 @@
+@page "/frage33"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 33</h1>
+<br>
+    <div class="quiz-container">
+    <center><h3 class="question">Bei welchen Demonstrationen in Deutschland riefen die Menschen „Wir sind das Volk“?</h3</center>
+    <form>
+        
+          <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">Bei den Montagsdemonstrationen 1989 in der DDR</button>
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Beim Arbeiteraufstand 1953 in der DDR</button>
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Bei den Demonstrationen 1968 in der Bundesrepublik Deutschland</button>
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Bei den Anti-Atomkraft-Demonstrationen 1985 in der Bundesrepublik Deutschland</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:100%"32/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Beim Arbeiteraufstand 1953 in der DD");
+    MS.RichtigeAntwortenListe.Add("Bei den Montagsdemonstrationen 1989 in der DDR");
+    MS.FrageFalsch();
+    TS.ToggleTimer();
+    Navigation.NavigateTo("/auswertung");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   TS.ToggleTimer();
+   MS.FalscheAntworten.Add("Bei den Demonstrationen 1968 in der Bundesrepublik Deutschland");
+   MS.RichtigeAntwortenListe.Add("Bei den Montagsdemonstrationen 1989 in der DDR");
+   Navigation.NavigateTo("/auswertung");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   TS.ToggleTimer();
+   MS.FalscheAntworten.Add("Bei den Anti-Atomkraft-Demonstrationen 1985 in der Bundesrepublik Deutschland");
+   MS.RichtigeAntwortenListe.Add("Bei den Montagsdemonstrationen 1989 in der DDR");
+   Navigation.NavigateTo("/auswertung");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        TS.ToggleTimer();
+        Navigation.NavigateTo("/auswertung");
+    }
+} 

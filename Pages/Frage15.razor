@@ -1,0 +1,60 @@
+@page "/frage15"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 15</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Das Berufsinformationszentrum BIZ bei der Bundesagentur für Arbeit in Deutschland hilft bei der…?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage15Richtig">Lehrstellensuche</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage15Falsch(1))">Steuererklärung</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage15Falsch(2))">Rentenversicherung</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage15Falsch(3))">Krankenversicherung</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:45%">15/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage15Falsch(int Frage15Auswahl) 
+  {
+    switch(Frage15Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Steuererklärung");
+    MS.RichtigeAntwortenListe.Add("Lehrstellensuche");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage16");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Rentenversicherung");
+   MS.RichtigeAntwortenListe.Add("Lehrstellensuche");
+   Navigation.NavigateTo("/frage16");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Krankenversicherung");
+   MS.RichtigeAntwortenListe.Add("Lehrstellensuche");
+   Navigation.NavigateTo("frage16");
+        break; 
+    }
+  }
+
+    private void Frage15Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage16");
+    }
+} 

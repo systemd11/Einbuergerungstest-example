@@ -1,0 +1,46 @@
+@page "/auswertung"
+@inject TimeService TS
+@inject NavigationManager Navigation
+@inject MainService MS
+
+<h1>Auswertung</h1>
+<br>
+    <center><h3 class="question">Sie haben den Einbürgerungstest beendet. Unten finden Sie Ihre Auswertung</h3</center>
+    <div class="quiz-container">
+    
+@if (MS.RichtigeAntworten >= 17) 
+ {
+    <center><h3>Sie haben den Einbürgerungstest erfolgreich bestanden!</h3>
+    <h3>Zeit in Anspruch genommen: @TS.currentTime</h3></center>
+    
+} else if (MS.RichtigeAntworten < 17) {
+    <center><h3>Leider haben Sie den Einbürgerungstest nicht bestanden.</h3>
+    <h3>Zeit in Anspruch genommen: @TS.currentTime</h3></center>
+} else {
+      <center><h3>Ein Fehler ist aufgetreten, bitte versuche es erneut!</h3></center>
+    }
+<center><h3>Richtige Antworten: @MS.RichtigeAntworten</h3> </center>
+<div class="list-container">
+  <div class="list-header">
+    <div class="list-cell">Deine Antwort</div>
+    <div class="list-cell">Richtige Antwort</div>
+  </div>
+  
+  <div class="list-row">
+    <div class="list-cell">
+      @foreach (var afd in MS.FalscheAntworten)
+      {
+        <div class="list-cell">@afd</div>
+      }
+    </div>
+    <div class="list-cell">
+      @foreach (var e in MS.RichtigeAntwortenListe)
+      {
+        <div class="list-cell">@e</div>
+      }
+  </div>
+</div>
+</div>
+</div>
+
+

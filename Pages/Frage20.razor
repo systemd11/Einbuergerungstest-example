@@ -1,0 +1,60 @@
+@page "/frage20"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 20</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Im Parlament steht der Begriff „Opposition“ für…?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Die regierenden Parteien</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Die Fraktion mit den meisten Abgeordneten</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Alle Parteien, die bei der letzten Wahl die 5% - Hürde erreichen konnten</button>
+        <button class="answer-btn" type="button" @onclick="FrageRichtig">Alle Abgeordneten, die nicht zu den Regierungsparteien gehören"</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:60%">20/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Die regierenden Parteien");
+    MS.RichtigeAntwortenListe.Add("Alle Abgeordneten, die nicht zu den Regierungsparteien gehöre");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage21");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Die Fraktion mit den meisten Abgeordneten");
+   MS.RichtigeAntwortenListe.Add("Alle Abgeordneten, die nicht zu den Regierungsparteien gehöre");
+   Navigation.NavigateTo("/frage21");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Alle Parteien, die bei der letzten Wahl die 5% - Hürde erreichen konnten");
+   MS.RichtigeAntwortenListe.Add("Alle Abgeordneten, die nicht zu den Regierungsparteien gehöre");
+   Navigation.NavigateTo("/frage21");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage21");
+    }
+} 

@@ -1,0 +1,59 @@
+@page "/frage19"
+@inject MainService MS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 19</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wie viele Mitgliedstaaten hat die EU?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage19Richtig">27</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage19Falsch(1))">26</button>
+         <button class="answer-btn" type="button" @onclick="@(() => Frage19Falsch(2))">29</button>
+        <button class="answer-btn" type="button" @onclick="@(() => Frage19Falsch(3))">22</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:56%">19/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage19Falsch(int Frage19Auswahl) 
+  {
+    switch(Frage19Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("26");
+    MS.RichtigeAntwortenListe.Add("27");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage20");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("29");
+   MS.RichtigeAntwortenListe.Add("37");
+   Navigation.NavigateTo("/frage20");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("22");
+   MS.RichtigeAntwortenListe.Add("27");
+   Navigation.NavigateTo("frage20");
+        break; 
+    }
+  }
+
+    private void Frage19Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage20");
+    }
+} 

@@ -1,0 +1,60 @@
+@page "/frage8"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 8</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Was bedeutet die Abkürzung SPD?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage8Falsch(1))">Sozialgerechte Partei Deutschlands</button>
+          <button class="answer-btn" type="button" @onclick="Frage8Richtig">Sozialdemokratische Partei Deutschlands</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage8Falsch(2))">Sozialistische Partei Deutschlands</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage8Falsch(3))">Sozialpolitische Partei Deutschlands</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:24%">8/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage8Falsch(int Frage8Auswahl) 
+  {
+    switch(Frage8Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Sozialgerechte Partei Deutschland");
+    MS.RichtigeAntwortenListe.Add("Sozialdemokratische Partei Deutschlands");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage9");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Sozialistische Partei Deutschlands<");
+   MS.RichtigeAntwortenListe.Add("Sozialdemokratische Partei Deutschlands");
+   Navigation.NavigateTo("/frage9");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Sozialpolitische Partei Deutschlands");
+   MS.RichtigeAntwortenListe.Add("Sozialdemokratische Partei Deutschlands");
+   Navigation.NavigateTo("/frage9");
+        break; 
+    }
+  }
+
+    private void Frage8Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage9");
+    }
+} 

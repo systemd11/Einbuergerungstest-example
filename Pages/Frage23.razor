@@ -1,0 +1,60 @@
+@page "/frage23"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 23</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wenn das Parlament eines deutschen Bundeslandes gewählt wird, nennt man das </h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Kommunalwahl</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Europawahl</button>
+         <button class="answer-btn" type="button" @onclick="FrageRichtig">Landtagswahl</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Bundestagswahl</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:69%">23/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Kommunalwahl");
+    MS.RichtigeAntwortenListe.Add("Landtagswahl");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage24");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Europawahl");
+   MS.RichtigeAntwortenListe.Add("Landtagswahl.");
+   Navigation.NavigateTo("/frage24");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Bundestagswahl");
+   MS.RichtigeAntwortenListe.Add("Landtagswahl");
+   Navigation.NavigateTo("/frage24");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage24");
+    }
+} 

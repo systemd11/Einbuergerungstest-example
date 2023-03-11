@@ -1,0 +1,60 @@
+@page "/frage6"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 6</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Was ereignete sich am 17. Juni 1953 in der DDR?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage6Richtig">Landesweite Streiks und ein Volksaufstand</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage6Falsch(1))">Der feierliche Beitritt zum Warschauer Pakt</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage6Falsch(2))">Der 1. SED-Parteitag</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage6Falsch(3))">Der erste Besuch Fidel Castros</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:18%">6/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage6Falsch(int Frage6Auswahl) 
+  {
+    switch(Frage6Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Der feierliche Beitritt zum Warschauer Pakt");
+    MS.RichtigeAntwortenListe.Add("Landesweite Streiks und ein Volksaufstand");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage7");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Der 1. SED-Parteitag");
+   MS.RichtigeAntwortenListe.Add("Landesweite Streiks und ein Volksaufstand");
+   Navigation.NavigateTo("/frage7");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Der erste Besuch Fidel Castro");
+   MS.RichtigeAntwortenListe.Add("Landesweite Streiks und ein Volksaufstand");
+   Navigation.NavigateTo("/frage7");
+        break; 
+    }
+  }
+
+    private void Frage6Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage7");
+    }
+} 

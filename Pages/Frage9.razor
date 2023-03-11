@@ -1,0 +1,60 @@
+@page "/frage9"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 9</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Welches Land war keine „Alliierte Besatzungsmacht“ in Deutschland??</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage9Richtig">Diktatur</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage9Falsch(1))">Demokratie</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage9Falsch(2))">Räterepublik</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage9Falsch(3))">Monarchie</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:24%">9/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage9Falsch(int Frage9Auswahl) 
+  {
+    switch(Frage9Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Demokratie");
+    MS.RichtigeAntwortenListe.Add("Diktatur");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage10");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Räterepublik");
+   MS.RichtigeAntwortenListe.Add("Diktatur");
+   Navigation.NavigateTo("/frage10");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Monarchie");
+   MS.RichtigeAntwortenListe.Add("Diktatur");
+   Navigation.NavigateTo("/frage10");
+        break; 
+    }
+  }
+
+    private void Frage9Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage10");
+    }
+} 

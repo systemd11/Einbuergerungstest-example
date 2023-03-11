@@ -1,0 +1,60 @@
+@page "/frage5"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 5</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Wofür stand der Ausdruck „Eisener Vorhang“?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="Frage5Richtig">Des Warschauer Pakts gegen den Westen</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage5Falsch(1))">Norddeutschlands gegen Süddeutschland</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage5Falsch(2))">Europas gegen die USA</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage5Falsch(3))">Nazi-Deutschlands gegen die Allierten</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:15%">5/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage5Falsch(int Frage5Auswahl) 
+  {
+    switch(Frage5Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Norddeutschlands gegen Süddeutschland");
+    MS.RichtigeAntwortenListe.Add("Des Warschauer Pakts gegen den Westen");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage6");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Europas gegen die USA");
+   MS.RichtigeAntwortenListe.Add("Des Warschauer Pakts gegen den Westen");
+   Navigation.NavigateTo("/frage6");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Nazi-Deutschlands gegen die Allierten");
+   MS.RichtigeAntwortenListe.Add("Des Warschauer Pakts gegen den Westen");
+   Navigation.NavigateTo("/frage6");
+        break; 
+    }
+  }
+
+    private void Frage5Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage6");
+    }
+} 

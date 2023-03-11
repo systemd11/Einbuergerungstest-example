@@ -1,0 +1,60 @@
+@page "/frage11"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 11</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Welches Land ist ein Nachbarland von Deutschland?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage11Falsch(1))">Finnland</button>
+          <button class="answer-btn" type="button" @onclick="Frage11Richtig">Dänemark</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage11Falsch(2))">Schweden</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage11Falsch(3))">Norwegen</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:33%">11/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage11Falsch(int Frage11Auswahl) 
+  {
+    switch(Frage11Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Finnland");
+    MS.RichtigeAntwortenListe.Add("Dänemark");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage12");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Schweden");
+   MS.RichtigeAntwortenListe.Add("Dänemark");
+   Navigation.NavigateTo("/frage12");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Norwegen");
+   MS.RichtigeAntwortenListe.Add("Dänemark");
+   Navigation.NavigateTo("frage12");
+        break; 
+    }
+  }
+
+    private void Frage11Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage12");
+    }
+} 

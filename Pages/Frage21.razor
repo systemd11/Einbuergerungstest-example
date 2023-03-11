@@ -1,0 +1,60 @@
+@page "/frage21"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 21</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Was versteht man unter dem Recht auf „Freizügigkeit“ in Deutschland?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Man kann seinen Beruf frei wechseln</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Man darf sich für eine andere Religion entscheiden</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Man darf sich in der Öffentlichkeit leicht bekleidet bewegen</button>
+        <button class="answer-btn" type="button" @onclick="FrageRichtig">Man darf sich sein Wohnort aussuchen"</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:63%">21/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Man kann seinen Beruf frei wechseln");
+    MS.RichtigeAntwortenListe.Add("Man darf sich sein Wohnort aussuchen");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage22");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Man darf sich für eine andere Religion entscheiden");
+   MS.RichtigeAntwortenListe.Add("Man darf sich sein Wohnort aussuchen");
+   Navigation.NavigateTo("/frage22");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Man darf sich in der Öffentlichkeit leicht bekleidet bewegen");
+   MS.RichtigeAntwortenListe.Add("Man darf sich sein Wohnort aussuchen");
+   Navigation.NavigateTo("/frage22");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage22");
+    }
+} 

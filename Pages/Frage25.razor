@@ -1,0 +1,60 @@
+@page "/frage25"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 25</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Ein Richter / eine Richterin gehört in Deutschland zur …?</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))"></button>
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">Vollziehenden Gewalt</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Club Deutscher Unternehme</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Christlicher Deutscher Umweltschutz</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:75%">26/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void FrageFalsch(int FrageAuswahl) 
+  {
+    switch(FrageAuswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("Vollziehenden Gewalt");
+    MS.RichtigeAntwortenListe.Add("Christlich Demokratische Union");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage26");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Club Deutscher Unternehme");
+   MS.RichtigeAntwortenListe.Add("Christlich Demokratische Union");
+   Navigation.NavigateTo("/frage26");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Christlicher Deutscher Umweltschutz");
+   MS.RichtigeAntwortenListe.Add("Christlich Demokratische Union");
+   Navigation.NavigateTo("/frage26");
+        break; 
+    }
+  }
+
+    private void FrageRichtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage26");
+    }
+} 

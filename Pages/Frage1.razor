@@ -1,0 +1,61 @@
+@page "/frage1"
+@inject MainService MS
+@inject TimeService TS
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@inject NavigationManager Navigation
+
+<h1>Einbürgerungstest - Frage 1</h1>
+<br>
+    <div class="quiz-container">
+      <center><h3 class="question">Die Bundesrepublik Deutschland ist heute gegliedert in:</h3</center>
+      
+    <form>
+        <div class="btn-container">
+          <button class="answer-btn" type="button" @onclick="@(() => Frage1Falsch(1))">In vier Besatzungszonen</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage1Falsch(2))">Einen Oststaat und einen Weststaat</button>
+          <button class="answer-btn" type="button" @onclick="@(() => Frage1Falsch(3))">16 Kantone</button>
+          <button class="answer-btn" type="button" @onclick="Frage1Richtig">Bund, Länder und Kommunen</button>
+        </div>
+    <br>
+<div class="w3-light-grey w3-round">
+  <div class="w3-container w3-round w3-blue" style="width:3%">1/33</div>
+    </div>
+      </form>
+    </div>
+
+@code {
+
+private void Frage1Falsch(int Frage1Auswahl) 
+  {
+    switch(Frage1Auswahl) {
+            
+        case 1:
+    MS.FalscheAntworten.Add("In vier Besatzungszonen");
+    MS.RichtigeAntwortenListe.Add("Bund, Länder und Kommunen");
+    MS.FrageFalsch();
+    Navigation.NavigateTo("/frage2");
+        break; 
+
+        case 2:
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("Einen Oststaat und einen Weststaat");
+   MS.RichtigeAntwortenListe.Add("Bund, Länder und Kommunen");
+   Navigation.NavigateTo("/frage2");
+        break;
+            
+        case 3: 
+   MS.FrageFalsch();
+   MS.FalscheAntworten.Add("16 Kantone");
+   MS.RichtigeAntwortenListe.Add("Bund, Länder und Kommunen");;
+   Navigation.NavigateTo("/frage2");
+        break; 
+    }
+  }
+
+    private void Frage1Richtig() {
+        MS.FrageRichtig();
+        Navigation.NavigateTo("/frage2");
+    }
+} 
+
