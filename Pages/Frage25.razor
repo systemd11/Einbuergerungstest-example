@@ -8,18 +8,18 @@
 <h1>Einbürgerungstest - Frage 25</h1>
 <br>
     <div class="quiz-container">
-      <center><h3 class="question">Ein Richter / eine Richterin gehört in Deutschland zur …?</h3</center>
+      <center><h3 class="question">Was bedeutet die Abkürzung CDU in Deutschland?</h3</center>
       
     <form>
         <div class="btn-container">
-          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))"></button>
-          <button class="answer-btn" type="button" @onclick="FrageRichtig">Vollziehenden Gewalt</button>
+          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Christliche Deutsche Union</button>
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">Christlich Demokratische Union</button>
          <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Club Deutscher Unternehme</button>
         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Christlicher Deutscher Umweltschutz</button>
         </div>
     <br>
 <div class="w3-light-grey w3-round">
-  <div class="w3-container w3-round w3-blue" style="width:75%">26/33</div>
+  <div class="w3-container w3-round w3-blue" style="width:75%">25/33</div>
     </div>
       </form>
     </div>
@@ -31,7 +31,7 @@ private void FrageFalsch(int FrageAuswahl)
     switch(FrageAuswahl) {
             
         case 1:
-    MS.FalscheAntworten.Add("Vollziehenden Gewalt");
+    MS.FalscheAntworten.Add("Christliche Deutsche Union");
     MS.RichtigeAntwortenListe.Add("Christlich Demokratische Union");
     MS.FrageFalsch();
     Navigation.NavigateTo("/frage26");
