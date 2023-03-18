@@ -8,13 +8,13 @@
 <h1>Einbürgerungstest - Frage 30</h1>
 <br>
     <div class="quiz-container">
-    <center><h3 class="question">Welches Gericht ist in Deutschland bei Konflikten in der Arbeitswelt zuständig?</h3</center>
+    <center><h3 class="question">Ein Richter gehört in Deutschland zur… ?</h3</center>
     <form>
         <div class="btn-container">
-           <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">Das Familiengericht</button>
-          <button class="answer-btn" type="button" @onclick="FrageRichtig">Das Arbeitsgericht</button>
-         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">Das Strafgericht</button>
-        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">Das Amtsgericht</button>
+           <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(1))">vollziehenden Gewalt</button>
+          <button class="answer-btn" type="button" @onclick="FrageRichtig">rechtsprechenden Gewalt</button>
+         <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(2))">planenden Gewalt</button>
+        <button class="answer-btn" type="button" @onclick="@(() => FrageFalsch(3))">gesetzgebenden Gewalt</button>
         </div>
     <br>
 <div class="w3-light-grey w3-round">
@@ -30,23 +30,24 @@ private void FrageFalsch(int FrageAuswahl)
     switch(FrageAuswahl) {
             
         case 1:
-    MS.FalscheAntworten.Add("Das Familiengericht");
-    MS.RichtigeAntwortenListe.Add("Das Arbeitsgericht");
+    MS.FalscheAntworten.Add("vollziehenden Gewalt");
+    MS.RichtigeAntwortenListe.Add("rechtsprechenden Gewalt.
+");
     MS.FrageFalsch();
     Navigation.NavigateTo("/frage31");
         break; 
 
         case 2:
    MS.FrageFalsch();
-   MS.FalscheAntworten.Add("Das Strafgericht");
-   MS.RichtigeAntwortenListe.Add("Das Arbeitsgericht");
+   MS.FalscheAntworten.Add("planenden Gewalt");
+   MS.RichtigeAntwortenListe.Add("rechtsprechenden Gewalt");
    Navigation.NavigateTo("/frage31");
         break;
             
         case 3: 
    MS.FrageFalsch();
-   MS.FalscheAntworten.Add("Das Amtsgericht");
-   MS.RichtigeAntwortenListe.Add("Das Arbeitsgericht");
+   MS.FalscheAntworten.Add("gesetzgebenden Gewalt");
+   MS.RichtigeAntwortenListe.Add("rechtsprechenden Gewalt");
    Navigation.NavigateTo("/frage31");
         break; 
     }
