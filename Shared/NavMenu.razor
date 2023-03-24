@@ -1,0 +1,22 @@
+@inject NavigationManager Navigation
+@inject MainService MS
+
+<MudNavMenu>
+<br>
+    <MudNavLink Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Update" @onclick="Restart">Test neu starten</MudNavLink>
+    <MudNavLink Href="https://github.com/Informatik-Projekt-Blazor/Einbuergerungstest-example" Match="NavLinkMatch.Prefix" Icon="@Icons.Custom.Brands.GitHub" Target="_blank" Rel="noopener noreferrer">Quellcode</MudNavLink>
+</MudNavMenu>
+
+@code {
+
+    public void Restart() {
+        MS.Bestanden = false;
+        MS.RichtigeAntworten = 0;
+        MS.AntwortenGegeben = 0;
+        MS.FalscheAntwortenAnzahl = 0;
+        MS.FalscheAntworten.Clear();
+        MS.RichtigeAntwortenListe.Clear();
+
+        Navigation.NavigateTo("/");
+    }
+}
